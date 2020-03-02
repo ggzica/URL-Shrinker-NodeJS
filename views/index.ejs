@@ -14,25 +14,29 @@
         <input class="form-control mr-2 col" required placeholder="URL" type="url" name="fullURL" id="fullURL">
         <button class="btn btn-success" type="submit">Shrink</button>
     </form>
-
-    <table class="table table-striped table-responsive">
-        <thead>
-            <tr>
-                <th>Full URL</th>
-                <th>Short URL</th>
-                <th>Clicks</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% shortURLs.forEach(shortUrl => { %>
-              <tr>
-                <td><a href="<%= shortUrl.full %>"><%= shortUrl.full %></a></td>
-                <td><a href="<%= shortUrl.short %>"><%= shortUrl.short %></a></td>
-                <td><%= shortUrl.clicks %></td>
-              </tr>
-            <% }) %>
-          </tbody>
-    </table>
+    <% if (shortURLs) { %>
+        <table class="table table-striped table-responsive">
+                <thead>
+                    <tr>
+                        <th>Full URL</th>
+                        <th>Short URL</th>
+                        <th>Clicks</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% shortURLs.forEach(shortUrl => { %>
+                      <tr>
+                        <td><a href="<%= shortUrl.full %>"><%= shortUrl.full %></a></td>
+                        <td><a href="<%= shortUrl.short %>"><%= shortUrl.short %></a></td>
+                        <td><%= shortUrl.clicks %></td>
+                        <td><%= shortUrl.date %> </td>
+                      </tr>
+                    <% }) %>
+                  </tbody>
+            </table>
+    <% } %>
+   
 </div>
 </body>
 </html>
